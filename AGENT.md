@@ -401,7 +401,16 @@ State explicitly in your final message which checks you ran and their results. I
 
 - The GitHub repository is `Node-JS-Clean-Arc-Template` and it is **PRIVATE. It must never be made public.** Never use `--public`/`--internal`; never change visibility; after any repo creation/settings change verify with `gh repo view --json visibility` that it is `PRIVATE`.
 - Default branch `main`. **Never force-push**, never rewrite published history, never commit directly secrets/`.env`/`node_modules`/`dist`.
-- Commit messages follow Conventional Commits: `feat:`, `fix:`, `refactor:`, `test:`, `docs:`, `chore:`, `security:`. One logical change per commit.
+- Commit messages must strictly follow this format in English:
+
+  ```
+  Title (e.g. feat: add login endpoint)
+
+  - detail 1 (e.g. created login.use-case.ts)
+  - detail 2 (e.g. added login route to auth.routes.ts)
+  ```
+
+  Every change must be noted in a maximally detailed format. Any number of details can be added as bullet points. The primary rule is that everything must be written in detail. One logical change per commit.
 - Never push without: green verification gate, `README.md` updated, `AGENT.md` present.
 - Do not request, print, or store GitHub tokens or other credentials. If `gh` is unauthenticated, stop and ask the owner to authenticate.
 
