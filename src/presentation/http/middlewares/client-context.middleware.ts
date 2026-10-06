@@ -5,10 +5,12 @@ import { PLATFORMS, type Platform } from '@/domain/enums/platform';
 import { isLanguage } from '@/shared/i18n/languages';
 
 export const clientContext: RequestHandler = (req, _res, next) => {
-  const platform = req.header(HEADERS.platform)?.toLowerCase();
-  if (!platform || !(PLATFORMS as readonly string[]).includes(platform)) throw new AppError('HEADER_PLATFORM_INVALID');
+  const platformRaw = req.header(HEADERS.platform)?.toLowerCase();
+  const platform = platformRaw || 'web';
+  if (!(PLATFORMS as readonly string[]).includes(platform)) throw new AppError('HEADER_PLATFORM_INVALID');
 
-  const language = req.header(HEADERS.language)?.toLowerCase();
+  const languageRaw = req.header(HEADERS.language)?.toLowerCase();
+  const language = languageRaw || 'en';
   if (!isLanguage(language)) throw new AppError('HEADER_LANGUAGE_INVALID');
 
   const regionRaw = req.header(HEADERS.region);

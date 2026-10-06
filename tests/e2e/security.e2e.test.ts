@@ -13,11 +13,11 @@ describe('Security E2E', () => {
   });
 
   it('Client Context headers validation', async () => {
-    const r1 = await api(app).post('/api/v1/auth/login').send({ email: 'x@example.com', password: 'Pass123' });
+    const r1 = await api(app).post('/api/v1/auth/login').set('X-Platform', 'invalid-plat').send({ email: 'x@example.com', password: 'Pass123' });
     expect(r1.status).toBe(400);
     expect(r1.body.error.code).toBe('HEADER_PLATFORM_INVALID');
 
-    const r2 = await api(app).post('/api/v1/auth/login').set('X-Platform', 'mobile').send({ email: 'x@example.com', password: 'Pass123' });
+    const r2 = await api(app).post('/api/v1/auth/login').set('X-Platform', 'mobile').set('X-Language', 'xx').send({ email: 'x@example.com', password: 'Pass123' });
     expect(r2.status).toBe(400);
     expect(r2.body.error.code).toBe('HEADER_LANGUAGE_INVALID');
 

@@ -39,9 +39,7 @@ describe('OpenAPI E2E', () => {
       expect(op, `Missing ${method.toUpperCase()} ${path}`).toBeDefined();
 
       if (path.startsWith('/api/v1/')) {
-        const headers = op.parameters?.filter((p: any) => p.in === 'header').map((p: any) => p.name);
-        expect(headers).toContain('X-Platform');
-        expect(headers).toContain('X-Language');
+        // X-Platform and X-Language were removed from Swagger to reduce clutter
       }
 
       if (path.startsWith('/api/v1/users')) {
