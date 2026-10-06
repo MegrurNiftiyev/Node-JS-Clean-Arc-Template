@@ -174,7 +174,7 @@ x-powered-by off + trust proxy → requestId → pino-http → swagger(/docs, ow
 - **Never forget the middleware layer.** Before finishing any route change, answer: Does it have `validate`? Is it protected with `authenticate`? Does it need `authorize('admin')`? Does it need a stricter limiter? Is it in Swagger?
 
 ### 8.2 Helmet / headers
-- `helmet()` stays enabled with defaults for the whole API. Only the `/docs` routes get a relaxed CSP (inline script/style for Swagger UI), nothing else.
+- `helmet()` stays enabled with defaults for the whole API. Only the `/api-docs` routes get a relaxed CSP (inline script/style for Swagger UI), nothing else.
 - `x-powered-by` stays disabled. API responses carry `Cache-Control: no-store`.
 
 ### 8.3 CORS
@@ -222,7 +222,7 @@ x-powered-by off + trust proxy → requestId → pino-http → swagger(/docs, ow
 ### 8.9 Network exposure ("ports stay closed")
 - The server binds to `HOST` (default `127.0.0.1`) and opens **only** `PORT`. Never add a second listener, debug/inspector port (`--inspect`), admin port, metrics port, or `0.0.0.0` default outside Docker.
 - Docker: `EXPOSE` only the app port; run as non-root (`USER node`); publish on loopback in examples (`-p 127.0.0.1:3000:3000`); production sits behind a TLS reverse proxy.
-- Swagger (`/docs`, `/docs.json`) is **off by default** (`SWAGGER_ENABLED=false`) and must stay disabled in production unless explicitly required.
+- Swagger (`/api-docs`, `/api-docs.json`) is **off by default** (`SWAGGER_ENABLED=false`) and must stay disabled in production unless explicitly required.
 
 ### 8.10 Secrets and dependencies
 - No secret in code, tests (other than fixed test-only values in `vitest.config.ts`), README, logs, or commits. `.env` is git-ignored; only `.env.example` with placeholders is committed.

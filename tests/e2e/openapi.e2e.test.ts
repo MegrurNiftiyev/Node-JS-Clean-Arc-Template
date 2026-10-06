@@ -24,7 +24,7 @@ describe('OpenAPI E2E', () => {
   ];
 
   it('doc.json contains exactly the manifest', async () => {
-    const res = await api(app).get('/docs.json');
+    const res = await api(app).get('/api-docs.json');
     expect(res.status).toBe(200);
     const doc = res.body;
 

@@ -48,7 +48,7 @@ It features multi-language support (i18n), strict data validation, OTP-based pas
 When the server is running and `SWAGGER_ENABLED=true` is set, deployed Swagger docs are available at:
 
 ```text
-http://localhost:3000/docs
+http://localhost:3000/api-docs
 ```
 
 To test endpoints requiring authentication directly in Swagger, use the **Authorize** button. If you are simulating a mobile app, set `X-Platform` to `mobile` inside the endpoint's parameter inputs.

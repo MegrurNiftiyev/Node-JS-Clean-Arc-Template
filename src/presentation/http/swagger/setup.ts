@@ -19,6 +19,6 @@ export function mountSwagger(app: Express, env: Env): void {
       },
     },
   });
-  app.get('/docs.json', docsHelmet, (_req, res) => { res.json(doc); });
-  app.use('/docs', docsHelmet, swaggerUi.serve, swaggerUi.setup(doc, { customSiteTitle: 'API Docs' }));
+  app.get('/api-docs.json', docsHelmet, (_req, res) => { res.json(doc); });
+  app.use('/api-docs', docsHelmet, swaggerUi.serve, swaggerUi.setup(doc, { customSiteTitle: 'API Docs' }));
 }

@@ -9,7 +9,7 @@ async function main(): Promise<void> {
   const server = app.listen(env.PORT, env.HOST, () => {
     container.logger.info(`Listening on http://${env.HOST}:${env.PORT}`);
     if (env.SWAGGER_ENABLED) {
-      container.logger.info(`📚 Swagger API Docs: http://${env.HOST}:${env.PORT}/docs`);
+      container.logger.info(`📚 Swagger API Docs: http://${env.HOST}:${env.PORT}/api-docs`);
     }
   });
 
