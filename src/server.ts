@@ -6,7 +6,12 @@ async function main(): Promise<void> {
   const container = buildContainer(env);
   await container.init();
   const app = createApp(container);
-  const server = app.listen(env.PORT, env.HOST, () => container.logger.info(`Listening on http://${env.HOST}:${env.PORT}`));
+  const server = app.listen(env.PORT, env.HOST, () => {
+    container.logger.info(`Listening on http://${env.HOST}:${env.PORT}`);
+    if (env.SWAGGER_ENABLED) {
+      container.logger.info(`📚 Swagger API Docs: http://${env.HOST}:${env.PORT}/docs`);
+    }
+  });
 
   const shutdown = (signal: string): void => {
     container.logger.info(`${signal} received, shutting down`);
