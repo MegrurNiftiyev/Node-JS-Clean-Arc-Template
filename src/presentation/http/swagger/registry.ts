@@ -9,10 +9,7 @@ export const registry = new OpenAPIRegistry();
 registry.registerComponent('securitySchemes', 'bearerAuth', { type: 'http', scheme: 'bearer', bearerFormat: 'JWT', description: 'Mobile clients: Authorization: Bearer <accessToken>' });
 registry.registerComponent('securitySchemes', 'cookieAuth', { type: 'apiKey', in: 'cookie', name: 'access_token', description: 'Web clients: HttpOnly cookie set by login/register/refresh' });
 
-/** Required on every /api/v1 route. */
-export const clientHeadersSchema = z.object({
-  'X-Region': z.string().length(2).optional().openapi({ example: 'AZ', description: 'ISO 3166-1 alpha-2 (optional)' }),
-});
+export const clientHeadersSchema = z.object({});
 
 export const errorResponse = (description: string) => ({
   description,
