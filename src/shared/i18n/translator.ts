@@ -1,9 +1,9 @@
-import az from './locales/az.json';
-import en from './locales/en.json';
-import ru from './locales/ru.json';
-import tr from './locales/tr.json';
-import de from './locales/de.json';
-import es from './locales/es.json';
+import az = require('./locales/az.json');
+import en = require('./locales/en.json');
+import ru = require('./locales/ru.json');
+import tr = require('./locales/tr.json');
+import de = require('./locales/de.json');
+import es = require('./locales/es.json');
 import type { ErrorCode } from '../errors/error-codes';
 import type { Language } from './languages';
 
