@@ -7,7 +7,6 @@ import type { Request } from 'express';
 import type { Container } from '@/container';
 import { AppError } from '@/shared/errors';
 import { API_BASE_PATH, JSON_BODY_LIMIT } from '@/config/constants';
-import { requestId } from '@/presentation/http/middlewares/request-id.middleware';
 import { clientContext } from '@/presentation/http/middlewares/client-context.middleware';
 import { enforceJson } from '@/presentation/http/middlewares/enforce-json.middleware';
 import { noStore } from '@/presentation/http/middlewares/no-store.middleware';
@@ -26,16 +25,14 @@ export function createApp(c: Container): Express {
   app.disable('x-powered-by');
   app.set('trust proxy', env.TRUST_PROXY);
 
-  app.use(requestId);
-  app.use(pinoHttp({ logger: c.logger, genReqId: (req) => (req as Request).requestId }));
+  app.use(pinoHttp({ logger: c.logger }));
   mountSwagger(app, env);
   app.use(helmet());
   app.use(cors({
     origin: (origin, cb) => (!origin || env.CORS_ORIGINS.includes(origin) ? cb(null, true) : cb(new AppError('CORS_ORIGIN_NOT_ALLOWED'))),
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'X-Platform', 'X-Language', 'X-Region', 'X-Request-Id'],
-    exposedHeaders: ['X-Request-Id'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Platform', 'X-Language', 'X-Region'],
     maxAge: 600,
   }));
   app.use(limiters.global);

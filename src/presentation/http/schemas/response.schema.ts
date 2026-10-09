@@ -27,6 +27,5 @@ export const errorEnvelopeSchema = z.object({
     code: z.enum(ERROR_CODES),
     message: z.string(),
     details: z.array(z.object({ field: z.string(), message: z.string() })).optional(),
-  }),
-  requestId: z.string(),
+  })
 }).openapi('ErrorResponse');

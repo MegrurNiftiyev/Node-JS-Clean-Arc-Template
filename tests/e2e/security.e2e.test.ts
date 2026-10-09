@@ -68,10 +68,7 @@ describe('Security E2E', () => {
   });
 
   it('Error response structure', async () => {
-    const reqId = 'abcdefgh-1234';
-    const res = await api(app).get('/api/v1/unknown').set(mobile).set('X-Request-Id', reqId);
-    expect(res.body.requestId).toBe(reqId);
-    expect(res.headers['x-request-id']).toBe(reqId);
+    const res = await api(app).get('/api/v1/unknown').set(mobile);
     expect(res.body.error.stack).toBeUndefined();
   });
 

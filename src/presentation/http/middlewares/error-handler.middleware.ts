@@ -30,7 +30,6 @@ export const errorHandler: ErrorRequestHandler = (err: unknown, req, res, _next)
       message: translateError(lang, appError.code),
       ...(appError.details ? { details: appError.details.map((d) => ({ field: d.field, message: translateValidation(lang, d.messageKey) })) } : {}),
     },
-    requestId: req.requestId,
   };
   res.status(appError.status).json(body); // never include err.message or err.stack
 };

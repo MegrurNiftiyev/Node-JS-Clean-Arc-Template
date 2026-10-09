@@ -34,6 +34,13 @@ It features multi-language support (i18n), strict data validation, OTP-based pas
 
 ---
 
+## 🌍 Live Demo (Production)
+
+🚀 **Base URL:** [https://node-js-clean-arc-template.onrender.com](https://node-js-clean-arc-template.onrender.com)  
+📖 **Swagger API Docs:** [https://node-js-clean-arc-template.onrender.com/api-docs](https://node-js-clean-arc-template.onrender.com/api-docs)
+
+---
+
 ## 🌟 Key Features
 1. **True Clean Architecture**: Zero dependency on frameworks in the core domain and application layers. You can swap Express for Fastify or MongoDB for PostgreSQL without touching business logic.
 2. **Hybrid Token Architecture**: Securely handles multiple platforms. Mobile apps receive tokens in JSON body, web apps receive tokens automatically via secure `HttpOnly` cookies to prevent XSS.

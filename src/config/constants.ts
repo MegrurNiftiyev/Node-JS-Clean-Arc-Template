@@ -6,7 +6,6 @@ export const HEADERS = {
   platform: 'x-platform',
   language: 'x-language',
   region: 'x-region',
-  requestId: 'x-request-id',
 } as const;
 
 /** Keep in sync with the locale texts "at least 8" / "at most 72" (validation.PASSWORD_TOO_SHORT / TOO_LONG). */

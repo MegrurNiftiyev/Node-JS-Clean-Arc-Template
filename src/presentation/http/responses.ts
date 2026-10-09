@@ -10,7 +10,6 @@ export interface SuccessBody<T> { success: true; message: string; data: T; meta?
 export interface ErrorBody {
   success: false;
   error: { code: ErrorCode; message: string; details?: { field: string; message: string }[] };
-  requestId: string;
 }
 
 export function sendSuccess<T>(
